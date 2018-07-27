@@ -67,7 +67,7 @@ class HomePage extends Component {
             </button>
           </div>
         </section>
-        <ItemList data={this.state.stories} emptyMessage='myStories'/>
+        <ItemList data={this.state.stories} emptyMessage='stories'/>
       </PageFrame>
     );
   }

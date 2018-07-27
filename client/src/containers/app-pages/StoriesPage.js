@@ -65,7 +65,7 @@ class StoriesPage extends Component {
             </button>
           </div>
         </section>
-        <ItemList data={this.state.myStories} emptyMessage='stories'/>
+        <ItemList data={this.state.myStories} emptyMessage='myStories'/>
       </PageFrame>
     );
   }

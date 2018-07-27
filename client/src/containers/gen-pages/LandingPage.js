@@ -25,7 +25,6 @@ class LandingPage extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
     this.setState({
       ...this.state,
       sampleStories: nextProps.sampleStories,
@@ -40,9 +39,8 @@ class LandingPage extends Component {
   //Helper methods
   renderStories = () => {
     const {sampleStories} = this.state;
-    console.log(sampleStories);
 
-    if (sampleStories.length > 0) {
+    if (sampleStories.length >= 0) {
       return (
         <div className="container">
           <div className="row">

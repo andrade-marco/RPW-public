@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 //API URL
-const API_URL = '' || 'http://localhost:8080';
+const localUrl = 'http://localhost:8080';
 
 //Adding token to request header
  export function setTokenHeader(token) {
