@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 //API URL
-const API_URL = 'https://rpw.herokuapp.com' || 'http://localhost:8080';
+const API_URL = '' || 'http://localhost:8080';
 
 //Adding token to request header
  export function setTokenHeader(token) {
@@ -15,7 +15,7 @@ const API_URL = 'https://rpw.herokuapp.com' || 'http://localhost:8080';
 
 //Making requests
 export function makeApiRequest(method, path, data) {
-  const url = API_URL + path;
+  const url = path;
   return axios[method](url, data);
 }
 
