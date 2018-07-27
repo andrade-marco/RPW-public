@@ -7,16 +7,19 @@ const cors = require('cors');
 
 
 //Internal imports
-const PORT = process.env.PORT || 8080;
-const rootDir = __dirname.replace('server', '');
 const errorHandler = require('./handlers/error');
 const authRoutes = require('./routes/auth');
 const profileRoutes = require('./routes/profile');
 const storyRoutes = require('./routes/stories');
 
 
+// Setup variables
+const PROD_ENV = (process.env.PORT !== undefined);
+const PORT = process.env.PORT || 8080;
+const ROOT_DIR = __dirname.replace('server', '');
+
 //Setup
-app.use(express.static(rootDir + 'client/build'));
+if (PROD_ENV) app.use(express.static(ROOT_DIR + 'client/build'));
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -26,9 +29,12 @@ app.use('/api/profiles', profileRoutes);
 app.use('/api/stories', storyRoutes);
 
 //Send React's index.html
-app.get('/', (req, res) => {
-  res.sendFile(rootDir + 'client/build/index.html');
-});
+if (PROD_ENV) {
+  app.get('/', (req, res) => {
+    res.sendFile(ROOT_DIR + 'client/build/index.html');
+  });
+
+}
 
 //Error handling
 //Create a new error and pass it to the next middleware
