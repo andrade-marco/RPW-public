@@ -25,6 +25,11 @@ app.use('/api/auth', authRoutes);
 app.use('/api/profiles', profileRoutes);
 app.use('/api/stories', storyRoutes);
 
+//Send React's index.html
+app.get('/', (req, res) => {
+  res.sendFile(rootDir + 'client/build/index.html');
+});
+
 //Error handling
 //Create a new error and pass it to the next middleware
 //This will be reached if none of the app's routes was reached
@@ -36,11 +41,6 @@ app.use(function(req, res, next) {
 
 //Send to errorHandler
 app.use(errorHandler);
-
-//Send React's index.html
-app.get('*', (req, res) => {
-  res.sendFile(rootDir + 'client/build/index.html');
-});
 
 //Listening
 app.listen(PORT, function() {
