@@ -8,13 +8,15 @@ const cors = require('cors');
 
 //Internal imports
 const PORT = process.env.PORT || 8080;
+const rootDir = __dirname.replace('server', '');
 const errorHandler = require('./handlers/error');
 const authRoutes = require('./routes/auth');
 const profileRoutes = require('./routes/profile');
 const storyRoutes = require('./routes/stories');
 
+
 //Setup
-app.use(express.static(__dirname + 'client/build'));
+app.use(express.static(rootDir + 'client/build'));
 app.use(cors());
 app.use(bodyParser.json());
 
