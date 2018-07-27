@@ -1,6 +1,10 @@
 //API requests
 import axios from 'axios';
 
+//API URL
+const API_URL = process.env.API_URL || 'http://localhost:8080';
+console.log(API_URL);
+
 //Adding token to request header
  export function setTokenHeader(token) {
     if (token) {
@@ -12,7 +16,7 @@ import axios from 'axios';
 
 //Making requests
 export function makeApiRequest(method, path, data) {
-  const url = 'http://localhost:8080' + path;
+  const url = API_URL + path;
   return axios[method](url, data);
 }
 
