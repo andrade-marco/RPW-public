@@ -2,8 +2,7 @@
 import axios from 'axios';
 
 //API URL
-const API_URL = process.env.API_URL || 'http://localhost:8080';
-console.log(API_URL);
+const API_URL = 'http://rpw.herokuapp.com' || 'http://localhost:8080';
 
 //Adding token to request header
  export function setTokenHeader(token) {
