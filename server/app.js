@@ -39,11 +39,10 @@ app.use(errorHandler);
 
 //Send React's index.html
 app.get('*', (req, res) => {
-  res.sendFile(path.join(rootDir + '/client/build/index.html'));
+  res.sendFile(rootDir + 'client/build/index.html');
 });
 
 //Listening
 app.listen(PORT, function() {
   console.log('API server has started on PORT: ', PORT);
-  console.log(__dirname);
 });
