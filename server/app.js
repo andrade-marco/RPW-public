@@ -1,6 +1,7 @@
 //RPW APP
 //Module imports
 const express = require('express');
+const path = require('path');
 const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -14,6 +15,7 @@ const profileRoutes = require('./routes/profile');
 const storyRoutes = require('./routes/stories');
 
 //Setup
+app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(cors());
 app.use(bodyParser.json());
 
