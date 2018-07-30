@@ -47,12 +47,15 @@ class LandingPage extends Component {
             <div className="col-md-6 p-2" style={{margin: 'auto'}}>
               <div className='card'>
                 <div className='card-body'>
-                  <h5 className='card-title'>Seven billion unicorns</h5>
+                  <h5 className='card-title'>Capillarity</h5>
                   <p className='card-text'>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Nobody could tell you when it started. But everyone in that little town would tell you that it came suddenly and without a warning. It started with a few men who lived in the west end of the town. For each of those men, the process took about a month. At the start of the month, they all had a full head of hair, but thirty days later they were completely bald. Not a single hair left on their heads.
                   </p>
                   <p className='card-text'>
-                    Maecenas at diam in nulla maximus fermentum ac quis enim. Cras ut velit ornare, venenatis justo quis, mollis metus. Nulla nibh lorem, tristique non rutrum et, ultricies ut urna. Aliquam dignissim massa id metus tincidunt efficitur. Suspendisse convallis sapien sed dolor consequat, sit amet viverra urna ultricies. Cras erat risus, elementum eget molestie ac, hendrerit et magna. Mauris facilisis turpis enim, vitae pulvinar est gravida tempus. Ut nec quam scelerisque, vestibulum elit at, tincidunt justo. Donec quis augue finibus, faucibus enim sit amet, maximus sem. Cras non magna purus. Nam convallis orci et tempor pharetra.
+                    At first the “hairless plague”, as the residents called it, only affected men, and in about a year, all of them had gone through the thirty-day balding period. After that, however, the epidemic started to affect women. For them, the process lasted forty-five days, but again after a full year, all of the town’s women were completely bald.
+                  </p>
+                  <p className='card-text'>
+                    The most difficult moment for the residents came when the plague started to affect children. A massive commotion ensued, with the town’s mayor finally declaring the situation a state of emergency.
                   </p>
                 </div>
               </div>
@@ -62,9 +65,9 @@ class LandingPage extends Component {
                 <div className="col-12 p-2">
                   <div className='card'>
                     <div className='card-body'>
-                      <h5 className='card-title'>The Feynman Appeal</h5>
+                      <h5 className='card-title'>Feynman’s Appeal</h5>
                       <p className='card-text'>
-                        Vestibulum nec lacus non sem lacinia aliquet. Praesent varius, ante vel ultrices pulvinar, lectus nibh laoreet arcu, a commodo magna lorem eget leo. Fusce risus enim, tincidunt sit amet maximus sit amet, mattis non diam. Ut id ex sed nisi facilisis suscipit et vitae odio. Aliquam massa augue, fringilla eu tincidunt et, ultricies sed ex. Proin venenatis, odio at euismod faucibus, velit eros maximus tortor, quis consequat dolor ipsum at ipsum.
+                        Since the Great Fracture, I had never seen a rainy day like that one. Droplets hitting the roof sounded like tiny bombs. A familiar sound from the old times. I sat inside listening to the clock ticking irregularly, it was quite annoying. Nobody knew how to fix it. Nobody needed to know the time anymore, just me. I was waiting for the target’s name and location.
                       </p>
                     </div>
                   </div>
@@ -74,9 +77,9 @@ class LandingPage extends Component {
                 <div className="col-12 p-2">
                   <div className='card'>
                     <div className='card-body'>
-                      <h5 className='card-title'>The never ending story</h5>
+                      <h5 className='card-title'>The present habit</h5>
                       <p className='card-text'>
-                        In vehicula libero molestie egestas bibendum. Duis eget justo nibh. Nulla dignissim ligula ut neque gravida, vitae facilisis sem posuere. Quisque cursus interdum risus. Morbi nibh purus, lacinia nec arcu ut, suscipit egestas sapien. Cras sodales vestibulum augue vitae lacinia. Integer sed tortor pellentesque, fermentum mi ut, rhoncus ante. Donec vulputate viverra libero. Suspendisse ut mi et arcu mattis tempor eu sed nibh. Donec gravida orci in purus.
+                        It was his eighteenth birthday. He wasn’t sure his parents would remember it. He definitely was not expecting gifts. They had been busy, it wasn’t negligence. He also didn’t think he was that important anyway. There was no party plans or friends coming over. Standing in front of a mirror he decided to give a gift to himself.
                       </p>
                     </div>
                   </div>

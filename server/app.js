@@ -5,13 +5,14 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-
 //Internal imports
 const errorHandler = require('./handlers/error');
 const authRoutes = require('./routes/auth');
 const profileRoutes = require('./routes/profile');
 const storyRoutes = require('./routes/stories');
 
+//Services
+const SegmentUpdate = require('./services/SegmentUpdate');
 
 // Setup variables
 const PROD_ENV = (process.env.PORT !== undefined);
