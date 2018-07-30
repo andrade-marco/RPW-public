@@ -43,6 +43,7 @@ class LandingPage extends Component {
     if (sampleStories.length >= 0) {
       return (
         <div className="container">
+          <h5>Featured stories</h5>
           <div className="row">
             <div className="col-md-6 p-2" style={{margin: 'auto'}}>
               <div className='card'>
@@ -146,7 +147,7 @@ class LandingPage extends Component {
               Collectively create stories
             </h3>
             <p className="text-center p-3">
-              Let your imagination and writing skills take over. In RPW, writers create stories and contribute to each other stories. The community votes on whether or not proposed contributions should become part of the main storyline. Better writing and more accepted contributions increase your reputation, giving you more priviledges within the community.
+              Let your imagination and writing skills take over. In RPW, stories are not just written, they are built. Working together, writers can build stories by creating new storylines and contributing to each other stories. The community then votes on whether or not proposed contributions should become part of the main storylines. Better writing increases the chances of your contributions being accepted and improve your reputation, giving you more privileges within the community.
             </p>
             {this.renderStories()}
             <div className="container text-center" style={{marginTop: '20px'}}>
