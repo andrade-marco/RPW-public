@@ -28,7 +28,7 @@ class SignUpPage extends Component {
   //Handling input change
   handleInputChange = event => {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value.trim()
     });
   }
 
@@ -59,13 +59,13 @@ class SignUpPage extends Component {
             <form className='signup-form' onSubmit={this.handleSignUpSubmit}>
               <h4>Start building stories!</h4>
               <div className='form-group'>
-                <label htmlFor='username'>Pseudonym</label>
+                <label htmlFor='username'>Pen name</label>
                 <input
                   type='text'
                   name='username'
                   className='form-control'
                   onChange={this.handleInputChange}
-                  placeholder='Enter your psedonym'/>
+                  placeholder='Enter your pen name (no spaces)'/>
                 <small className="form-text text-muted">What readers and authors will see as your name.</small>
               </div>
               <div className='form-group'>

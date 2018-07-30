@@ -16,6 +16,7 @@ const userSchema = new mongoose.Schema({
   },
   email: {
     type: String,
+    lowercase: true,
     required: true,
     unique: true
   },
@@ -26,7 +27,7 @@ const userSchema = new mongoose.Schema({
     },
     designation: {
       type: String,
-      default: 'Rookie'
+      default: 'Unranked'
     }
   },
   about: {

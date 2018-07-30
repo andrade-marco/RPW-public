@@ -37,7 +37,8 @@ select:focus {
 
 input::placeholder,
 textarea::placeholder {
-  color: #ECEBF3 !important;
+  color: #CDCDCD !important;
+  font-size: 0.85em;
   font-weight: lighter;
   font-style: italic;
 }
