@@ -1,4 +1,6 @@
-//Home Page
+//Single story page
+//Display story to allow users to read content, submit additional segments
+//or voting on current segment submissions
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {Rating} from 'semantic-ui-react';
@@ -14,6 +16,7 @@ import NewSegmentForm from '../../components/NewSegmentForm';
 import VotingPanel from '../../components/VotingPanel';
 import EmptyPanel from '../../components/EmptyPanel';
 
+//Component
 class SingleStoryPage extends Component {
   constructor(props) {
     super(props);
@@ -28,17 +31,26 @@ class SingleStoryPage extends Component {
   }
 
   //Lifecycle methods
+  //Call action to retrieve specific story from API
+  //Note: CWM should be replaced with CDM
   componentWillMount() {
     const {id} = this.props.match.params;
     this.props.fetchingStories(id);
   }
 
+  //Updates component once story is received
+  //Note: CWRP should be replaced with CDU
   componentWillReceiveProps(nextProps) {
     const {initialText, segments} = nextProps.currentStory;
+
+    //Create pages array that will contain story pages - first page contains initialText and 2 segments
+    //Keep only the segments that were accepted in voting
     let pagesArray = [];
     let segmentsCopy = segments.filter(val => val.status === 'accepted');
     pagesArray[0] = [{content: initialText}, segmentsCopy[0], segmentsCopy[1]];
 
+    //Remove first two segments that were used in first page, and create pages (3 segments or less per page)
+    //Note: optimal number of segments per page has not been decided yet
     segmentsCopy = segmentsCopy.slice(2);
     while (segmentsCopy.length) {
       var newPage = segmentsCopy.splice(0,3);
@@ -53,8 +65,8 @@ class SingleStoryPage extends Component {
     });
   }
 
-  //Helper methods
-  //Setting control buttons
+  //Helpers
+  //Setting header for story with subscriber info and page control
   settingStoryControls = () => {
     if ('subscribers' in this.state.currentStory) {
       const {pages} = this.state;
@@ -90,15 +102,13 @@ class SingleStoryPage extends Component {
   //Setting up the current story
   settingUpPage = () => {
     const {selectedPage, pages} = this.state;
-    if (pages.length > 0 && selectedPage <= pages.length && selectedPage > 0) {
-      const currentPage = pages[selectedPage - 1].map((val,i) => {
-        if (val) {
-          return <div key={i}><br/>{val.content}</div>
-        } else {
-          return val;
-        }
-      });
 
+    //Check if selectedPage is valid
+    if (pages.length > 0 && selectedPage <= pages.length && selectedPage > 0) {
+      //Create current page given page selected
+      const currentPage = pages[selectedPage - 1].map((val, i) => {
+        if (val) return <div key={i}><br/>{val.content}</div>;
+      });
       return <div className='story-container'>{currentPage}</div>;
     }
 

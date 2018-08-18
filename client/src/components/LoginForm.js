@@ -1,7 +1,10 @@
 //Login Form
+//Horizontal (i.e. navbar form) and vertical (i.e. collapsed navbar form) login forms
 import React from 'react';
 
+//Component
 const LoginForm = ({horizontal, onChange, onSubmit, onFocus, header}) => {
+  //Check for type and add appropriate classes
   const formClass = (horizontal) ? 'signin-form' : '';
   const containerClass = (horizontal) ? 'form-row' : 'form-column';
   const colClass = (horizontal) ? 'col' : 'alt-col';
@@ -41,4 +44,5 @@ const LoginForm = ({horizontal, onChange, onSubmit, onFocus, header}) => {
   );
 }
 
+//Export
 export default LoginForm;

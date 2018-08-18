@@ -1,4 +1,5 @@
 //New Segment Form
+//Displays the form for submitting new segment to a story
 import React from 'react';
 
 //Component

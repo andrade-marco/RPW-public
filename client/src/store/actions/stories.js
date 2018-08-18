@@ -14,12 +14,13 @@ import {
 const PREFIX = '/api/stories/';
 
 //Action creators
-//Fetching stories
+//Fetch stories or user-specific stories depending on params passed
 export const fetchingStories = (storyId, userId) => async dispatch => {
   try {
     let path = PREFIX;
     let actionType = SET_ALL_STORIES;
 
+    //Determines which type of action and API path
     if (storyId) {
       path += storyId;
       actionType = SET_CURRENT_STORY;
@@ -32,11 +33,13 @@ export const fetchingStories = (storyId, userId) => async dispatch => {
     dispatch({type: actionType, payload: response.data});
 
   } catch (err) {
+    //Unhandled error - needs update
     console.log(err.response);
   }
 }
 
-//Fetching sample stories
+//Fetch randomized sample stories to be displayed on landing page
+//Note: this is currently not being used
 export const fetchingSampleStories = () => async dispatch => {
   try {
     const path = PREFIX + 'sample';
@@ -44,22 +47,24 @@ export const fetchingSampleStories = () => async dispatch => {
     dispatch({type: SET_SAMPLE_STORIES, payload: response.data});
 
   } catch (err) {
+    //Unhandled error - needs update
     console.log(err);
   }
 }
 
-//Fetching segments
+//Fetch segments create by current user
 export const fetchingSegments = userId => async dispatch => {
   try {
     const path = PREFIX + 'segments/' + userId;
     const response = await makeApiRequest('get', path, null);
     dispatch({type: SET_MY_SEGMENTS, payload: response.data});
   } catch (err) {
+    //Unhandled error - needs update
     console.log(err.response);
   }
 }
 
-//Creating a new story
+//Sends basic information for creating new story
 export const creatingNewStory = (storyData, callback) => async dispatch => {
   try {
     const path = PREFIX;
@@ -74,7 +79,7 @@ export const creatingNewStory = (storyData, callback) => async dispatch => {
   }
 }
 
-//Updating subscribers
+//Updates whether or not user is subscriber to specific story
 export const updatingSubscribers = storyId => async dispatch => {
   try {
     const path = PREFIX + storyId + '/subscribers';
@@ -82,11 +87,12 @@ export const updatingSubscribers = storyId => async dispatch => {
     dispatch({type: SET_CURRENT_STORY, payload: response.data});
 
   } catch (err) {
+    //Unhandled error - needs update
     console.log(err.response);
   }
 }
 
-//Creating new segment
+//Sends basic information for creating new segment
 export const creatingNewSegment = (storyId, content) => async dispatch => {
   try {
     const path = PREFIX + storyId + '/segments/new';
@@ -100,7 +106,7 @@ export const creatingNewSegment = (storyId, content) => async dispatch => {
   }
 }
 
-//Updating vote
+//Updates voting choice of current user
 export const updatingVote = (choice, storyId, segmentId, callback) => async dispatch => {
   try {
     const path = PREFIX + storyId + '/segments/' + segmentId;
@@ -109,16 +115,17 @@ export const updatingVote = (choice, storyId, segmentId, callback) => async disp
     if (success) {
       callback();
     } else {
-      //If tried to vote after voting window is closed
+      //Handles case in which voting window has closed already
       dispatch({type: SET_CURRENT_STORY, payload: response.data});
     }
 
   } catch (err) {
+    //Unhandled error - needs update
     console.log(err.response);
   }
 }
 
-//Clearing error
+//Clears global error to remove any error messages
 export const clearingError = () => dispatch => {
   dispatch({type: REMOVE_ERROR});
 }

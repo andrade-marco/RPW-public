@@ -1,7 +1,9 @@
 //In-app sidebar
+//Sidebar to display navigation links to user
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 
+//Component
 const SideBar = (props) => {
   return (
     <nav className="nav flex-column side-bar">
@@ -22,4 +24,5 @@ const SideBar = (props) => {
   );
 }
 
+//Export
 export default SideBar;

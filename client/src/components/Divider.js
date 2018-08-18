@@ -1,4 +1,5 @@
-//Profile Summary
+//Divider
+//Simple divider for sign in forms
 import React from 'react';
 
 //Component
@@ -12,6 +13,7 @@ const Divider = ({vertical}) => {
     borderHorizontal
   } = styles;
 
+  //Check whether divider should be vertical or horizontal
   const direction = (vertical) ? verticalDirection : horizontalDirection;
   const borderStyle = (vertical) ? borderVertical : borderHorizontal;
 

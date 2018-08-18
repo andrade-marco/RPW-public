@@ -1,8 +1,11 @@
+//New story page
+//Display long form for creating a new story
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import PageFrame from '../PageFrame';
 import {creatingNewStory, clearingError} from '../../store/actions/stories';
 
+//Component
 class NewStoryPage extends Component {
   constructor(props) {
     super(props);
@@ -15,6 +18,7 @@ class NewStoryPage extends Component {
   }
 
   //Lifecycle methods
+  //Sets error if something went wrong during story creation
   componentWillReceiveProps(nextProps) {
     this.setState({
       ...this.state,
@@ -22,14 +26,14 @@ class NewStoryPage extends Component {
     });
   }
 
-  //Handle changes in inputs
+  //Handles changes in form inputs
   handleInputChange = event => {
     this.setState({
       [event.target.name]: event.target.value
     });
   }
 
-  //Handle form submit
+  //Handles form submit for creating story
   handleStorySubmit = event => {
     event.preventDefault();
     this.props.clearingError();
@@ -38,6 +42,7 @@ class NewStoryPage extends Component {
     });
   }
 
+  //Rendering component
   render () {
     return (
       <PageFrame history={this.props.history}>
@@ -108,6 +113,7 @@ class NewStoryPage extends Component {
   }
 }
 
+//React-Redux: mapping global state to props
 const mapStateToProps = state => {
   return {
     currentUser: state.user.currentUser,
@@ -115,4 +121,5 @@ const mapStateToProps = state => {
   };
 }
 
+//Export
 export default connect(mapStateToProps, {creatingNewStory, clearingError})(NewStoryPage);

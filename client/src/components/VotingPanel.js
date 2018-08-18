@@ -1,4 +1,5 @@
 //Voting Panel
+//Panel that appears at the bottom of stories that have segments being voted on
 import React from 'react';
 
 //Component
@@ -55,6 +56,7 @@ const VotingPanel = ({segment, onVoting, hasVoted}) => {
   }
 }
 
+//Styles
 const styles = {
   votingHeader: {
     borderBottom: '1px solid #CDCDCD',
@@ -84,4 +86,5 @@ const styles = {
   }
 };
 
+//Export
 export default VotingPanel;

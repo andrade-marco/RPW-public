@@ -1,4 +1,7 @@
 //Navigation bar
+//Application's navigation bar has three types: in-app, out-app, and simple
+//In-version includes user profile summary, while out-app includes login form and sign up link
+//Simple version contains only app logo
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import LoginForm from './LoginForm';
@@ -17,6 +20,7 @@ const NavBar = ({
   onMenuClick,
   menuVisible}) => {
 
+  //Check for version of the navbar and add appropriate classes/logo
   const navClass = (navType) ? 'navbar '+ navType + '-navbar' : 'navbar';
   const imgUrl = (navType === 'out-app') ? "/images/rpw_logo.svg" : "/images/rpw_icon.svg";
   const imgHeight = (navType === 'out-app') ? 50 : 40;
@@ -55,11 +59,12 @@ const NavBar = ({
     }
   }
 
-  //Showing/hiding dropdown menu
+  //Showing/hiding dropdown menu (responsive)
   function renderMenu(isVisible) {
     const {dropdownStyle} = styles;
 
     if (isVisible) {
+      //Out app version includes the login form and signup link in responsive dropdown
       if (navType === 'out-app') {
         return (
           <div className='card nav-dropdown-menu' style={dropdownStyle}>
@@ -75,6 +80,7 @@ const NavBar = ({
           </div>
         );
       } else {
+        //In-app version contains same links found in fullscreen sidebar
         return (
           <div className='card nav-dropdown-menu' style={dropdownStyle}>
             <ProfileSummary user={user}/>

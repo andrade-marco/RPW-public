@@ -1,4 +1,5 @@
-//Home Page
+//Landing page
+//RPW landing page
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
@@ -6,6 +7,7 @@ import {signingUser, clearingError} from '../../store/actions/auth';
 import {fetchingSampleStories} from '../../store/actions/stories';
 import NavBar from '../../components/NavBar';
 
+//Component
 class LandingPage extends Component {
   constructor(props) {
     super(props);
@@ -19,11 +21,18 @@ class LandingPage extends Component {
   }
 
   //Lifecycle methods
+  //Call action to fetch a random sample of stories
+  //Note: Currently the landing page shows a static sample. Once there are more stories
+  //app will randomize sample stories being shown on landing page
+  //CWM should be replaced with CDM
   componentWillMount() {
     this.props.fetchingSampleStories();
     window.addEventListener('resize', this.handleResize);
   }
 
+  //Updates sample stories once data is received from API
+  //Note: Currently this has no effect on page render
+  //CWRP should be replaced with CDU
   componentWillReceiveProps(nextProps) {
     this.setState({
       ...this.state,
@@ -32,11 +41,14 @@ class LandingPage extends Component {
     });
   }
 
+  //Remove event listener
   componentWillUnmount() {
     window.removeEventListener('resize', this.handleResize);
   }
 
   //Helper methods
+  //Render sample stories on landing page
+  //Note: Currently this function returns a static sample of stories
   renderStories = () => {
     const {sampleStories} = this.state;
 
@@ -94,20 +106,20 @@ class LandingPage extends Component {
   }
 
   //Event handlers
-  //Handling input change
+  //Handling form input change
   handleInputChange = event => {
     this.setState({
       [event.target.name]: event.target.value
     });
   }
 
-  //Signing in users
+  //Handles user sign in
   handleSignIn = event => {
     event.preventDefault();
     this.props.signingUser('signin', this.state, () => this.props.history.push('/home'));
   }
 
-  //Handle menu click
+  //Handles responsive menu icon click
   handleMenuClick = event => {
     event.stopPropagation();
     this.setState(prevState => ({
@@ -116,16 +128,19 @@ class LandingPage extends Component {
     }));
   }
 
-  //Resizing handler
+  //Handles the resizing of page - if user left responsive menu open while resizing
+  //this will hide the menu
   handleResize = () => {
     this.setState({...this.state, menuVisible: false});
   }
 
-  //Clearing error
+  //Handles clearing of any errors being shown
   handleClearError = () => {
     this.props.clearingError();
   }
 
+
+  //Render component
   render () {
     return (
       <div className='page-wrapper'>
@@ -164,6 +179,7 @@ class LandingPage extends Component {
     }
 }
 
+//Styles
 const styles = {
   landingImage: {
     backgroundImage: "url('/images/typewriter.jpg')"
@@ -179,6 +195,7 @@ const styles = {
   }
 }
 
+//React-Redux: mapping global state to props
 const mapStateToProps = state => {
   return {
     sampleStories: state.stories.sampleStories,
@@ -186,6 +203,7 @@ const mapStateToProps = state => {
   };
 }
 
+//Export
 export default connect(mapStateToProps, {
   signingUser,
   clearingError,

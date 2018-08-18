@@ -1,4 +1,5 @@
 //Segment Item
+//Displays the segments that have been submitted by user
 import React from 'react';
 import {Link} from 'react-router-dom';
 
@@ -37,6 +38,7 @@ const SegmentItem = ({segment}) => {
   );
 }
 
+//Styles
 const styles = {
   itemContainer: {
     display: 'flex',
@@ -62,4 +64,5 @@ const styles = {
   }
 }
 
+//Export
 export default SegmentItem;

@@ -1,4 +1,5 @@
-//Stories actions
+//Profile actions
+//Note: these actions are not currently being used
 import {makeApiRequest} from '../../services/requests';
 import {SET_USER_PROFILE} from '../types';
 

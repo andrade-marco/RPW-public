@@ -1,9 +1,11 @@
 //Sign Up Page
+///Display sign up form for new users
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {signingUser, clearingError} from '../../store/actions/auth';
 import NavBar from '../../components/NavBar';
 
+//Component
 class SignUpPage extends Component {
   constructor(props) {
     super(props);
@@ -17,6 +19,7 @@ class SignUpPage extends Component {
   }
 
   //Lifecycle
+  //Updates local state in case of error and removes loading message
   componentWillReceiveProps(nextProps) {
     this.setState({
       ...this.state,
@@ -25,14 +28,23 @@ class SignUpPage extends Component {
     });
   }
 
-  //Handling input change
+  //Helpers
+  //Show loading while making request
+  showMessage = () => {
+    const {requesting, error} = this.state;
+    if (requesting) return <div style={{paddingTop: '10px'}}>Creating new user...</div>;
+    if (error) return <div style={{color: '#C20114', paddingTop: '10px'}}>{error}</div>;
+  }
+
+  //Handlers
+  //Handles form input change
   handleInputChange = event => {
     this.setState({
       [event.target.name]: event.target.value.trim()
     });
   }
 
-  //Handling sign up submit
+  //Handles sign up form submission
   handleSignUpSubmit = event => {
     event.preventDefault();
     this.props.clearingError();
@@ -43,13 +55,7 @@ class SignUpPage extends Component {
     });
   }
 
-  //Show loading while making request
-  showMessage = () => {
-    const {requesting, error} = this.state;
-    if (requesting) return <div style={{paddingTop: '10px'}}>Creating new user...</div>;
-    if (error) return <div style={{color: '#C20114', paddingTop: '10px'}}>{error}</div>;
-  }
-
+  //Render component
   render () {
     return(
       <div className='page-wrapper'>
@@ -96,6 +102,7 @@ class SignUpPage extends Component {
   }
 }
 
+//React-Redux: mapping global state to props
 const mapStateToProps = state => {
   return {
     user: state.user,
@@ -103,4 +110,5 @@ const mapStateToProps = state => {
   };
 }
 
+//Export
 export default connect(mapStateToProps, {signingUser, clearingError})(SignUpPage);

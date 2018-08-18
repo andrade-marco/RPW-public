@@ -1,7 +1,9 @@
 //Empty Panel
+//Message to indicate empty/no data found
 import React from 'react';
 
 //Messages
+//Different message options below
 const info = {
   subscribe: {
     title: 'Not a subscriber yet?',
@@ -37,6 +39,7 @@ const EmptyPanel = ({type}) => {
   );
 }
 
+//Styles
 const styles = {
   cardStyle: {
     padding: '25px 35px',
@@ -53,4 +56,5 @@ const styles = {
   }
 };
 
+//Export
 export default EmptyPanel;

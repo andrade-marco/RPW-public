@@ -3,7 +3,7 @@ import {makeApiRequest, processError, setTokenHeader} from '../../services/reque
 import {SET_CURRENT_USER, SET_ERROR, REMOVE_ERROR} from '../types';
 
 //Action creators
-//Signing up/in user
+//Attempts to sign in or sign up user
 export const signingUser = (type, formData, callback) =>  async dispatch => {
   try {
     const path = '/api/auth/' + type;
@@ -11,9 +11,12 @@ export const signingUser = (type, formData, callback) =>  async dispatch => {
     localStorage.setItem("jwtToken", response.data.token);
     setTokenHeader(response.data.token);
 
+    //Dispatch current user's information
     dispatch({type: SET_CURRENT_USER, payload: response.data});
     callback();
+
   } catch (err) {
+    //Sets up global error in case sign in/up failed
     const {name, message} = err.response.data.error;
     let errorMessage;
     if (name === 'InvalidUsernamePassword') {
@@ -30,7 +33,7 @@ export const signingUser = (type, formData, callback) =>  async dispatch => {
   }
 }
 
-//Signing out user
+//Signs out user by clearing token and removing current user
 export const signingOutUser = callback => dispatch => {
   localStorage.clear();
   setTokenHeader(null);
@@ -38,7 +41,7 @@ export const signingOutUser = callback => dispatch => {
   callback();
 }
 
-//Clearing error
+//Clears global error to remove any error messages
 export const clearingError = () => dispatch => {
   dispatch({type: REMOVE_ERROR});
 }

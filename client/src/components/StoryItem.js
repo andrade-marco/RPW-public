@@ -1,4 +1,6 @@
 //Story Item
+//Displays the stories that were retrieve from API
+//Stories can be the overall stories available or the user's stories only
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {Rating} from 'semantic-ui-react';
@@ -30,6 +32,7 @@ const StoryItem = ({story}) => {
   );
 }
 
+//Styles
 const styles = {
   itemContainer: {
     display: 'flex',
@@ -58,4 +61,5 @@ const styles = {
   }
 }
 
+//Export
 export default StoryItem;

@@ -1,4 +1,5 @@
 //App Navigation
+//Component responsible for the routing of the app
 import React from 'react';
 import {Switch, Route, Redirect, withRouter} from 'react-router-dom';
 
@@ -16,12 +17,15 @@ import SingleStoryPage from './app-pages/SingleStoryPage';
 
 //Determine end-point based on user authentication
 const routing = function(page, isReversed) {
+  //Check if user is already logged in and redirect accordingly
   const hasToken = localStorage.jwtToken;
   const endPoint = (hasToken && isReversed) ? <Redirect to='/home'/> :
                    (!hasToken && !isReversed) ? <Redirect to='/'/> : page;
   return endPoint;
 }
 
+//Component
+//Note: Last route below is responsible for redirecting in case invalid address is reached
 const AppNavigation = (props) => {
   return (
     <Switch>
@@ -36,5 +40,5 @@ const AppNavigation = (props) => {
       <Route render={() => <Redirect to='/'/>}/>
     </Switch>);
   }
-
+//Export
 export default withRouter(AppNavigation);

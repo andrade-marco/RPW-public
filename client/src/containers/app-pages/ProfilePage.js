@@ -1,4 +1,6 @@
 //Profile page
+//User's profile page showing information on user's account and forms for changing information
+//Note: this page is not currently being used
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import PageFrame from '../PageFrame';
@@ -14,11 +16,15 @@ class ProfilePage extends Component {
   }
 
   //Lifecycle methods
+  //Calls action for retrieving user information
+  //Note: CWM should be replaced with CDM
   componentWillMount() {
     const {_id} = this.props.currentUser;
     this.props.retrievingProfile(_id);
   }
 
+  //Updates component once user profile information is received
+  //Note: CWRP should be replaced with CDU
   componentWillReceiveProps(nextProps) {
     this.setState({
       ...this.state,
@@ -27,19 +33,20 @@ class ProfilePage extends Component {
   }
 
   //Event handlers
-  //Handle changes in inputs
+  //Handles changes in form inputs
   handleInputChange = event => {
     this.setState({
       [event.target.name]: event.target.value
     });
   }
 
-  //Handle form submit
+  //Handles form submit
   handleStorySubmit = event => {
     event.preventDefault();
 
   }
 
+  //Rendering component
   render () {
     const {avatarStyle, repStyle} = styles;
     const {username, reputation} = this.state.userProfile;
@@ -94,7 +101,7 @@ const styles = {
   }
 }
 
-//Map state to props
+//React-Redux: mapping global state to props
 const mapStateToProps = state => {
   return {
     currentUser: state.user.currentUser,
@@ -102,4 +109,5 @@ const mapStateToProps = state => {
   };
 }
 
+//Export
 export default connect(mapStateToProps, {retrievingProfile})(ProfilePage);

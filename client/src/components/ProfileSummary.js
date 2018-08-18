@@ -1,11 +1,15 @@
 //Profile Summary
+//Displays the user profile summary on the navbar or responsive dropdown menu
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 
+//Component
 const ProfileSummary = ({user}) => {
   const {username, reputation} = user;
   const {avatar, repContainer} = styles;
 
+  //Component shows user name, avatar, and reputation
+  //Note: current avatar is a placeholder - functionality to upload photo not implemented yet
   return (
     <NavLink className='nav-link' exact to='/'>
       <div className='user-summary'>

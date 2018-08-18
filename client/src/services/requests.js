@@ -1,11 +1,9 @@
 //API requests
+//Service for dealing with API requests
 import axios from 'axios';
 
-//API URL
-const localUrl = 'http://localhost:8080';
-
-//Adding token to request header
- export function setTokenHeader(token) {
+//Adds authentication toke to API requests
+export function setTokenHeader(token) {
     if (token) {
         axios.defaults.headers.common["Authorization"] = `RPW_Bearer ${token}`;
     } else {
@@ -13,13 +11,13 @@ const localUrl = 'http://localhost:8080';
     }
 }
 
-//Making requests
+//Sets up API requests depending on params from caller
 export function makeApiRequest(method, path, data) {
   const url = path;
   return axios[method](url, data);
 }
 
-//Process error from server
+//Process error message sent from server
 export function processError(message) {
   return message.split(/Path|\./)
                 .filter(val => val.includes('is required'))
