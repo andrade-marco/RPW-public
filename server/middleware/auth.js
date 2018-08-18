@@ -1,6 +1,6 @@
 //Auth middleware
 const jwt = require('jsonwebtoken');
-const SECRET_KEY = 'KxMhz22PtC0AT3FZ6gJOYbi36NRi3JMY4cc7vFajyZth2Um4iyMSjub03q5wXOTrnwLOs9YohyvOyQyr';
+const SECRET_KEY = process.env.ENCRYPTION_KEY;
 
 //Make sure user is logged in - Authentication
 exports.loginRequired = function(req, res, next) {

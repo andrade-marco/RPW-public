@@ -1,5 +1,4 @@
 //User model
-//Imports
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 

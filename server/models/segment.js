@@ -1,5 +1,4 @@
 //Segment model
-//Imports
 const mongoose = require('mongoose');
 
 //User schema

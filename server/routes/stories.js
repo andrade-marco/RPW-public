@@ -1,4 +1,5 @@
 //Stories & segments
+//Routes responsible for creating/editing/etc stories and segments
 const express = require('express');
 const router = express.Router();
 const {loginRequired} = require('../middleware/auth');
@@ -30,4 +31,5 @@ router.put('/:storyId/subscribers', loginRequired, updateSubscribers);
 //Voting on segments
 router.put('/:storyId/segments/:segmentId', loginRequired, updateSegmentVote);
 
+//Export
 module.exports = router;

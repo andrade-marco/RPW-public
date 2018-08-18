@@ -1,5 +1,4 @@
 //Story model
-//Imports
 const mongoose = require('mongoose');
 
 //Story schema

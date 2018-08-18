@@ -1,3 +1,5 @@
+//Authentication
+//Routes responsible for user authentication
 const express = require('express');
 const router = express.Router();
 const {signingUpUser, signingInUser, checkingUserToken} = require('../handlers/auth');
@@ -6,10 +8,11 @@ const {signingUpUser, signingInUser, checkingUserToken} = require('../handlers/a
 //Signing up new user
 router.post('/signup', signingUpUser);
 
-//Logging in existing user
+//Signing in existing user
 router.post('/signin', signingInUser);
 
 //Checking for user
 router.post('/check', checkingUserToken);
 
+//Export
 module.exports = router;
